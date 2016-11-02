@@ -2,6 +2,10 @@
 
 !*.f90
 
+!*.md
+
 !./about-makefile/*.f90
+
+!./about-makefile/*.md
 
 !./about-makefile/makefile

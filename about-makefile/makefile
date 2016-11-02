@@ -1,15 +1,25 @@
-objs = fun.o hello.o
+DIR_SRC = ./
+DIR_OBJ = ./obj
+DIR_BIN = ./
 
-dir_obj = ./obj/
+SRC = $(wildcard ${DIR_SRC}*.f90)  
+OBJ = $(patsubst %.f90,${DIR_OBJ}/%.o,$(notdir ${SRC}))
 
-obj = $(addprefix $(dir_obj),$(objs))
+TARGET = main
+
+BIN_TARGET = ${DIR_BIN}${TARGET}
 
 CC = gfortran
 
-cflags = -Wall -O2
+CFLAGS = -Wall -O2
 
-hello.exe: $(obj)
-	gfortran $(obj) -o dc3d.exe
+${BIN_TARGET}: ${OBJ}
+	$(CC) $(OBJ)  -o $@
 
-$(dir_obj)%.o: %.f90
-	$(CC) -c $(cflags) $< -o $@
+${DIR_OBJ}/%.o:${DIR_SRC}%.f90
+	$(CC) $(CFLAGS) -c  $< -o $@
+
+.PHONY:clean
+
+clean:
+	rm $(DIR_OBJ)/*.o
