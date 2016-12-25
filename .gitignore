@@ -4,6 +4,8 @@
 
 !*.md
 
+!*.py
+
 !./about-makefile/*.f90
 
 !./about-makefile/*.md
