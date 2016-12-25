@@ -9,3 +9,7 @@
 !./about-makefile/*.md
 
 !./about-makefile/makefile
+
+!./python/*.py
+
+!./python/*.md
